@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Add New Customer</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        background-color: #4CAF50;
+        color: white;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+      }
+      form {
+        margin: 20px;
+        padding: 20px;
+        border: 1px solid #ccc;
+      }
+      label {
+        display: inline-block;
+        width: 120px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      textarea {
+        padding: 5px;
+        width: 250px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        font-size: 16px;
+      }
+      input[type="radio"] {
+        margin-right: 10px;
+      }
+      input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Add New Customer</h1>
+    <form action="/customer_registeration" method="post">
+      <label for="first_name">First Name:</label>
+      <input type="text" name="First Name" id="first_name" required />
+      <br><br>
+      <label for="middle_name">Middle Name:</label>
+      <input type="text" name="Middle Name" id="middle_name" />
+      <br><br>
+      <label for="last_name">Last Name:</label>
+      <input type="text" name="Last Name" id="last_name" required />
+      <br><br>
+      <label for="dob">Date of Birth:</label>
+      <input type="date" name="DOB" id="dob" required />
+      <br><br>
+      <label for="gender">Gender:</label>
+      <input type="radio" name="Gender" id="gender_male" value="Male" required />
+      <label for="gender_male">Male</label>
+      <input type="radio" name="Gender" id="gender_female" value="Female" required />
+      <label for="gender_female">Female</label>
+      <br><br>
+      <label for="phone">Mobile No.:</label>
+      <input type="tel" name="Mobile Number" id="phone" required />
+      <br><br>
+      <label for="email">Email:</label>
+      <input type="email" name="Email" id="email" required />
+      <br><br>
+      <label for="City">City:</label>
+      <input type="test" name="City" id="City"  required/>
+      <br><br>
+      <label for="PIN">PIN:</label>
+      <input type="tel" name="PIN" id="PIN" required />
+      <br><br>
+      
+      <input type="submit" value="Add Customer" />
+    </form>
+  </body>
+</html>

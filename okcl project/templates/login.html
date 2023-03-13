@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <form action="/login" method="post">
+      <h2>Login</h2>
+
+      <label for="username">Username:</label>
+      <input type="text" name="email" id="username" required />
+      <br /><br />
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" required />
+      <br /><br />
+      <label for="role">Choose_role:</label>
+      <select id="role" name="Role">
+        <option value="admin">admin</option>
+        <option value="manager">manager</option>
+        <option value="employee">empolyee</option>
+      </select>
+
+      <br /><br />
+      <button type="submit", method="POST" class="btn" onclick=>Login</button>
+    </form>
+
+    <!--<script src="login_response.js"></script>-->
+  </body>
+</html>

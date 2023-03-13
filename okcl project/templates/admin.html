@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    
+    <title>Admin's Page</title>
+    
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th, td {
+        text-align: left;
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      th {
+        background-color: #4CAF50;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <p> As admin logged in </p>
+    <!--for search box-->
+    <div>
+      <form role="search" method="get" action="#">
+        <div style="text-align:right">
+          <label for="custosearch">Search Customer:</label>
+          <input type="search" id="custosearch" name="custosearch">
+          <input type="submit" value="search">
+        </div>
+     </form>
+    </div>
+
+    <a href="{{url_for('home')}}" >Log out</a><!--for logout-->
+
+    <h1>Customer List</h1>
+    <br>
+    <!--for notification box-->
+    <form>
+      <div id="notification-container"></div>
+    </form>
+    <br>
+    <!--add new customer button-->
+    <button><a href="{{url_for('add_customer')}}" >Add New Customer</a></button>
+    <!--<form action="/add_customer" method="GET">
+      <button type="submit", method="POST" class="btn" onclick=>Add customer</button>
+    </form>-->
+    <br>
+    <!--for getting customer list-->
+    <form action="/admin" method="get">
+      <button type="submit", method="get" class="btn" onclick=>Get Customers List</button>
+    </form>
+
+    <!--table content-->
+    <table>
+      <thead>
+        <tr>
+          <th>Index</th>
+          <th>First Name</th>
+          <th>Middle Name</th>
+          <th>Last Name</th>
+          <th>Date of Birth</th>
+          <th>Gender</th>
+          <th>Mobile Number</th>
+          <th>Email ID</th>
+          <th>City</th>
+          <th>PIN</th>
+          <th>Date</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for cstmr in data %}
+          <tr>
+            {% for value in cstmr.values() %}
+              {% if value==cstmr['_id']%}
+              <td>#</td>
+              {%else %}
+                <td>{{value}}</td>
+              {%endif%}
+            {% endfor %}  
+          <td><form  action="/update_customer/{{cstmr['_id']}}" >
+            <button type="submit">Edit</button>
+          </form>
+          </td>
+          
+          <td><form method="POST" action="/delete_by_admin/{{cstmr['_id']}}" >
+            <button type="submit">Delete Customer</button>
+          </form>
+                             
+        </td>
+        </tr>
+        {% endfor %}
+          
+        <!-- more rows here -->
+      </tbody>
+    </table>
+  
+    <!-- <script>
+      const notificationContainer = document.getElementById('notification-container');
+
+  fetch('/submit-form', {
+  method: 'POST',
+  // add any necessary headers and body data here
+  }).then(response => {
+  if (response.status === 200) {
+    response.json().then(data => {
+      notificationContainer.textContent = data.message;
+    });
+  } else {
+    notificationContainer.textContent = 'There was an error submitting the form.';
+  }
+  }).catch(error => {
+  notificationContainer.textContent = 'There was a network error.';
+  });
+
+
+
+
+
+    </script> -->
+    <!--<script>
+      // Add event listeners to edit and delete links
+      const editLinks = document.querySelectorAll('.edit-link');
+      editLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          window.location.href = 'customer_registeration.html?mode=edit';
+        });
+      });
+
+      const deleteLinks = document.querySelectorAll('.delete-link');
+      deleteLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          const shouldDelete = confirm('Are you sure you want to delete this customer?');
+          if (shouldDelete) {
+            // Perform delete action here
+          }
+        });
+      });
+    </script>-->
+  </body>
+</html>
